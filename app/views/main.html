@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="${_response_encoding}"/>
+
+    <title>#{get 'title' /}</title>
+
+    <link href="https://cdn.jsdelivr.net/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/select2/4.0.3/css/select2.min.css" rel="stylesheet"/>
+</head>
+
+<body>
+
+#{doLayout /}
+
+<script src="https://cdn.jsdelivr.net/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/select2/4.0.3/js/select2.min.js"></script>
+
+#{get 'scripts' /}
+
+</body>
+
+</html>

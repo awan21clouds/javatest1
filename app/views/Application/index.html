@@ -1,0 +1,54 @@
+#{extends 'main.html' /}
+
+#{set title:'Home' /}
+
+<div class="container">
+    <hr/>
+
+    <form action="Application/add" method="post">
+        <div class="form-group">
+            <label for="tags[]">Tags</label>
+            <select class="form-control" id="tags[]" multiple="multiple" name="tags[]"></select>
+        </div>
+
+        <button class="btn btn-success" type="submit">Insert</button>
+    </form>
+
+    <hr/>
+
+    <table class="table" id="parties">
+        <thead>
+        <tr>
+            <td>First Name</td>
+            <td>Last Name</td>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+#{set 'scripts'}
+
+<script>
+
+    var tagSelector = $("#tags\\[\\]");
+    tagSelector.select2();
+
+    $.getJSON('Application/tags').done(function (data) {
+        $(data).each(function (i, item) {
+            tagSelector.append($('<option/>').text(item.name));
+        });
+
+        tagSelector.select2();
+    });
+
+    $.getJSON('Application/parties').done(function (data) {
+        $(data).each(function (i, item) {
+            $('#parties tbody').append($('<tr/>').append($('<td/>').text(item.firstName)).append($('<td/>').text(item.lastName)));
+        });
+    });
+
+</script>
+
+#{/set}
